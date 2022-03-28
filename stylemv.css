@@ -3,33 +3,72 @@
   padding: 0;
   margin: 0;
 }
-#container {
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
-  background-color: #ddd;
+  height: 100vh;
+}
+#container {
+ margin: 0 auto;
+  background-color: #ccc;
+  max-width: 1240px;
 }
 #canvas1 {
   display: block;
-  max-width: 1920px;
   width: 100%;
-  max-height: 1080px;
-  height: 100%;
+  /* max-height: 1080px; */
+  /* height: 100%; */
   margin: 10px, auto;
   background-color: #111;
-  border: 2px solid "blue";
+  border: 2px solid white;
 }
-
+.controller {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
 .btn {
-  margin: 20px;
-  width: 140px;
-  height: 40px;
+  margin: 10px;
+  min-width: 160px;
+  height: 45px;
   font-size: 1.5rem;
   color: #fff;
+  cursor: pointer;
   border-radius: 10px;
+  box-shadow: 3px 3px 5px #555;;
 }
 #recordBtn {
   background-color: red;
 }
 #stopBtn {
   background-color: #aaa;
+}
+#audio1 {
+  background-color: #ddd;
+  border: 1px solid #111;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+#fileupload {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+/* responsive */
+@media screen and(max-width: 944px){ 
+ .btn {
+  min-width: 45%;
+}
+}
+@media screen and (max-width: 604px){
+  .controller {
+    flex-direction: column;
+  }
+  .btn {
+    width: 80%;
+  }
 }

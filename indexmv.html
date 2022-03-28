@@ -11,14 +11,16 @@
   <body>
     <div id="container">
       <canvas id="canvas1"></canvas>
-      <input type="file" id="fileupload" accept="audio/*" />
-      <button class="btn" id="recordBtn">Record</button>
-      <button class="btn" id="stopBtn">Stop</button>
-      <audio id="audio1" controls>
-        <source src="./asset/asset_buk-m7-601.mp3" />
-      </audio>
-      <video id="video1" control></video>
+      <div class="controller">
+        <input type="file" id="fileupload" accept="audio/*" />
+        <audio id="audio1" controls>
+          <source src="./asset/asset_buk-m7-601.mp3" />
+        </audio>
+        <button class="btn" id="recordBtn">Record</button>
+        <button class="btn" id="stopBtn">Stop</button>
+        
     </div>
+  </div>
     <script type="module" src="./setupmv.js"></script>
     <!-- <script type="module" src="./particlesdot.js"></script>
     <script type="module" src="./lineflow.js"></script> -->
