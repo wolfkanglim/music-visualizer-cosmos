@@ -1,0 +1,161 @@
+import {init, animate} from './particlesdot.js';
+
+
+init();
+animate();
+
+const canvas = document.getElementById('canvas1');
+canvas.width = 1920;
+canvas.height = 1080;
+
+const ctx = canvas.getContext('2d');
+
+let audioSource;
+let analyser;
+const taeguk = new Image();
+taeguk.src = '../imagesvs/3taeguk.png';
+
+const audio1 = document.getElementById('audio1');
+
+const audioCtx = new AudioContext();
+
+    audioSource = audioCtx.createMediaElementSource(audio1);
+    analyser = audioCtx.createAnalyser();
+    audioSource.connect(analyser);
+    analyser.connect(audioCtx.destination);
+    analyser.fftSize = 256;
+    let bufferLength = analyser.frequencyBinCount;
+    let dataArray = new Uint8Array(bufferLength);
+    
+    let barWidth = canvas.width / bufferLength;
+    let x;
+    let barHeight;
+
+    function drawVisualizer(){
+      x = 0;
+      /* ctx.fillStyle = 'black';
+      ctx.fillRect(0,0,canvas.width,canvas.height); */
+     drawText();
+      analyser.getByteFrequencyData(dataArray);
+      for(let i = 0; i < bufferLength; i++){
+          barHeight = dataArray[i] / 2;
+  
+          //draw visualizer
+          const h = i * barHeight / 5;
+          const s = 90;
+          const l = 50;
+  
+          ctx.fillStyle = 'white';
+           ctx.fillRect(x + canvas.width / 2 , canvas.height - 45 - barHeight - 15, barWidth, 5);
+  
+          ctx.fillStyle = 'hsl('+ h +' , '+ s +'%, '+ l +'%)';
+          ctx.fillRect(x + canvas.width / 2, canvas.height - 50 - barHeight, barWidth, barHeight);
+  
+          ctx.fillStyle = 'white';
+          ctx.fillRect(canvas.width / 2 - x, canvas.height - 45 - barHeight - 15, barWidth, 5);
+  
+         ctx.fillStyle = 'hsl('+ h +' , '+ s +'%, '+ l +'%)';
+         ctx.fillRect(canvas.width / 2 - x, canvas.height - 50 - barHeight , barWidth, barHeight);
+  
+  
+          x += barWidth;
+      }
+      requestAnimationFrame(drawVisualizer); 
+  }
+  drawVisualizer();
+
+  function drawVisualizerCircle(){
+   x = 0;
+     analyser.getByteFrequencyData(dataArray);
+   for(let i = 0; i < bufferLength; i++){
+       barHeight = dataArray[i] / 2;
+
+       ctx.save();
+       ctx.translate(canvas.width / 2, canvas.height / 2 - 30);
+       ctx.rotate((i * Math.PI * 8) / bufferLength + Math.PI );
+       const h = (i * barHeight) / 5 + 10;
+       ctx.fillStyle = "#ddd";
+       ctx.fillRect(0, canvas.height / 3- barHeight - 40, barWidth / 3, 50);
+       ctx.fillStyle = "hsl(" + h + ", 100%, 50%)";
+       ctx.fillRect(0, 0, barWidth, barHeight * 4);
+       x += barWidth;
+       ctx.restore();
+       ctx.drawImage(taeguk, canvas.width / 2 - 50, canvas.height / 2 - 95, 120, 100);
+   }
+   requestAnimationFrame(drawVisualizerCircle); 
+}
+drawVisualizerCircle();
+  
+  //draw text
+  export function drawText(){
+      ctx.font = "100px Ariel";
+      ctx.fillStyle = 'white';
+      ctx.fillText('Dodree', canvas.width  / 7, canvas.height / 7);
+      ctx.font = '36px Verdana';
+      ctx.fillText('Music Visualizer by Wolfkang Lim', canvas.width * 2 / 3, canvas.height / 7);
+      ctx.fillText('Ableton Live 10 Intro and Javascript', canvas.width / 3, canvas.height - 25)
+   }
+
+
+const recordBtn = document.getElementById("recordBtn");
+const stopBtn = document.getElementById("stopBtn");
+
+let recording = false;
+let mediaRecorder;
+let recordedChunks;
+
+
+recordBtn.addEventListener("click", () => {
+   let dest = audioCtx.createMediaStreamDestination();
+   audioSource.connect(dest);
+   audioSource.connect(audioCtx.destination);
+   let audioTrack = dest.stream.getAudioTracks()[0];
+   
+   recording = !recording;
+   if (recording) {
+      recordBtn.style.backgroundColor = "#aaa";
+      stopBtn.style.backgroundColor = 'blue';
+
+      const canvasStream = canvas.captureStream(60);
+         
+      mediaRecorder = new MediaRecorder(canvasStream, {
+        mimeType: 'video/webm;codecs=vp9'        
+      }); 
+      canvasStream.addTrack(audioTrack);
+      recordedChunks = [];
+      mediaRecorder.ondataavailable = e => {
+         if (e.data.size > 0) {
+            recordedChunks.push(e.data);
+         }
+      };
+      mediaRecorder.start();
+   } 
+});
+
+stopBtn.addEventListener('click', () => {
+   recordBtn.style.backgroundColor = 'red';
+   stopBtn.style.backgroundColor = '#aaa';
+   mediaRecorder.stop();
+   setTimeout(() => {
+      const blob = new Blob(recordedChunks, {
+         type: "video/webm"
+      });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "recording.webm";
+      a.click();
+      URL.revokeObjectURL(url);
+   }, 0);
+});
+
+//choose audio file
+const file = document.getElementById('fileupload');
+
+file.addEventListener('change', function(){ 
+   const files = this.files;
+   audio1.src = URL.createObjectURL(files[0]);
+   audio1.load();
+})
+ 
+/////////////////////////
