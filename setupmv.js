@@ -88,12 +88,16 @@ drawVisualizerCircle();
   
   //draw text
   export function drawText(){
-      ctx.font = "100px Ariel";
+      ctx.font = "62px Ariel";
       ctx.fillStyle = 'white';
-      ctx.fillText('Dodree', canvas.width  / 7, canvas.height / 7);
-      ctx.font = '36px Verdana';
-      ctx.fillText('Music Visualizer by Wolfkang Lim', canvas.width * 2 / 3, canvas.height / 7);
-      ctx.fillText('Ableton Live 10 Intro and Javascript', canvas.width / 3, canvas.height - 25)
+      ctx.fillText('Music Visualizer', canvas.width  / 10, canvas.height / 9);
+      ctx.fillText('C O S M O S', canvas.width  / 10, canvas.height / 6);
+      ctx.font = '28px Verdana';
+      ctx.fillText('Make a music visible', canvas.width * 4 / 5, canvas.height / 9);
+      ctx.fillText('Upload', canvas.width * 4 / 5, canvas.height / 7);
+      ctx.fillText('Play', canvas.width * 4 / 5, canvas.height / 5.5);
+      ctx.fillText('Record', canvas.width * 4 / 5, canvas.height / 4.5);
+      ctx.fillText('Wondrous East 2022 Wolfkang', canvas.width / 3, canvas.height - 25)
    }
 
 
