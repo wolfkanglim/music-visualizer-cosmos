@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 const particlesArray = [];
 let hue = 0;
 const sprite = new Image();
-sprite.src = '../imagesvs/3taeguk.png';
+sprite.src = './asset/3taeguk.png';
 
 
 class Particle {
