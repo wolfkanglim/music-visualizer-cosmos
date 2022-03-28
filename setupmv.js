@@ -13,7 +13,7 @@ const ctx = canvas.getContext('2d');
 let audioSource;
 let analyser;
 const taeguk = new Image();
-taeguk.src = '../imagesvs/3taeguk.png';
+taeguk.src = './asset/3taeguk.png';
 
 const audio1 = document.getElementById('audio1');
 
