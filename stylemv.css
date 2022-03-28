@@ -14,6 +14,7 @@ body {
  margin: 0 auto;
   background-color: #ccc;
   max-width: 1240px;
+  height: 100%;
 }
 #canvas1 {
   display: block;
@@ -59,9 +60,9 @@ body {
 }
 
 /* responsive */
-@media screen and(max-width: 944px){ 
- .btn {
-  min-width: 45%;
+@media screen and(max-width: 944px){  
+.container {
+  height: 100%;
 }
 }
 @media screen and (max-width: 604px){
