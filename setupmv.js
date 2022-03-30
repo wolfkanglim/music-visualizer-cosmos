@@ -19,13 +19,28 @@ const audio1 = document.getElementById('audio1');
 const playBtn = document.getElementById('playBtn');
 const stopPlayBtn = document.getElementById('stopPlayBtn');
 const pauseBtn = document.getElementById('pauseBtn');
-playBtn.addEventListener('click', () => {
+playBtn.addEventListener('click', (e) => {
+   e.preventDefault();
    audio1.play();
 })
-stopPlayBtn.addEventListener('click', () => {
-   audio1.stop();
+stopPlayBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+   audio1.pause();
+   audio1.currentTime = 0;
 })
-pauseBtn.addEventListener('click', () => {
+pauseBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+   audio1.pause();
+})
+///touch event
+playBtn.addEventListener('touchstart', () => {
+   audio1.play();
+})
+stopPlayBtn.addEventListener('touchstart', () => {
+   audio1.pause();
+   audio1.currentTime = 0;
+})
+pauseBtn.addEventListener('touchstart', () => {
    audio1.pause();
 })
 
