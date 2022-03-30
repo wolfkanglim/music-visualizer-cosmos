@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Visualizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./stylemv.css" />
     <link rel="shortcut icon" href="#" />
   </head>
@@ -13,9 +14,12 @@
       <canvas id="canvas1"></canvas>
       <div class="controller">
         <input type="file" id="fileupload" accept="audio/*" />
-        <audio id="audio1" controls>
+        <audio id="audio1">
           <source src="./asset/asset_buk-m7-601.mp3" />
         </audio>
+        <button class="control-btn" id="stopPlayBtn"><i class="fas fa-stop"></i></button>
+        <button class="control-btn" id="playBtn"><i class="fas fa-play"></i></button>
+        <button class="control-btn" id="pauseBtn"><i class="fas fa-pause"></i></button>
         <button class="btn" id="recordBtn">Record</button>
         <button class="btn" id="stopBtn">Stop</button>
         

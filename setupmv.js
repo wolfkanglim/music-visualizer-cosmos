@@ -16,6 +16,18 @@ const taeguk = new Image();
 taeguk.src = './asset/3taeguk.png';
 
 const audio1 = document.getElementById('audio1');
+const playBtn = document.getElementById('playBtn');
+const stopPlayBtn = document.getElementById('stopPlayBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+playBtn.addEventListener('click', () => {
+   audio1.play();
+})
+stopPlayBtn.addEventListener('click', () => {
+   audio1.stop();
+})
+pauseBtn.addEventListener('click', () => {
+   audio1.pause();
+})
 
 const audioCtx = new AudioContext();
 
