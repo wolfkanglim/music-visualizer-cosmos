@@ -1,8 +1,8 @@
-const canvas = document.getElementById('canvas1');
+//const canvas = document.getElementById('canvas1');
 canvas.width = 1920;
 canvas.height = 1080;
 
-const ctx = canvas.getContext('2d');
+//const ctx = canvas.getContext('2d');
 
 const particlesArray = [];
 let hue = 0;
@@ -47,7 +47,7 @@ class Particle {
     }
 }
 
-export function init(){
+ function init(){
     let numberOfParticles = canvas.width / 40;
     for(let i = 0; i < numberOfParticles; i++){
         let size = Math.random() * 5 + 0.2;
@@ -80,7 +80,7 @@ function connect(){
     }
 }
 
-export function animate(){    
+ function animate(){    
     ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
@@ -91,5 +91,5 @@ export function animate(){
     //connect();
    hue += 2;
 }
-//init();
-//animate();
+init();
+animate();

@@ -1,13 +1,13 @@
-let canvas;
-let ctx;
+//let canvas;
+//let ctx;
 let flowField;
 let flowFieldAnimation;
-let x = 0;
-let y = 0;
+//let x = 0;
+//let y = 0;
 
 window.addEventListener('load', function(){
-    canvas = document.getElementById('canvas1');
-    ctx = canvas.getContext('2d');
+    //canvas = document.getElementById('canvas1');
+    //ctx = canvas.getContext('2d');
     canvas.width = 1920;
     canvas.height = 1080;
     flowField = new FlowFieldEffect(ctx, canvas.width, canvas.height);

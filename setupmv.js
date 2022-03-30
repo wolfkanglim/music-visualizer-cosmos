@@ -1,8 +1,8 @@
-import {init, animate} from './particlesdot.js';
+//import {init, animate} from './particlesdot.js';
 
 
-init();
-animate();
+//init();
+//animate();
 
 const canvas = document.getElementById('canvas1');
 canvas.width = 1920;
@@ -87,7 +87,7 @@ const audioCtx = new AudioContext();
 drawVisualizerCircle();
   
   //draw text
-  export function drawText(){
+  function drawText(){
       ctx.font = "62px Ariel";
       ctx.fillStyle = 'white';
       ctx.fillText('Music Visualizer', canvas.width  / 10, canvas.height / 9);
