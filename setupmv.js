@@ -33,15 +33,18 @@ pauseBtn.addEventListener('click', (e) => {
    audio1.pause();
 })
 ///touch event
-playBtn.addEventListener('touchstart', () => {
+playBtn.addEventListener('touchstart', (e) => {
+   e.preventDefault();
    audio1.load();
    audio1.play();
 })
 stopPlayBtn.addEventListener('touchstart', () => {
+   e.preventDefault();
    audio1.pause();
    audio1.currentTime = 0;
 })
 pauseBtn.addEventListener('touchstart', () => {
+   e.preventDefault();
    audio1.pause();
 })
 
