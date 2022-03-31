@@ -37,7 +37,7 @@ playBtn.addEventListener('touchstart', (e) => {
    e.preventDefault();
    audio1.load();
    audio1.play();
-})
+},true)
 stopPlayBtn.addEventListener('touchstart', (e) => {
    e.preventDefault();
    audio1.pause();
