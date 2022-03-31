@@ -34,6 +34,7 @@ pauseBtn.addEventListener('click', (e) => {
 })
 ///touch event
 playBtn.addEventListener('touchstart', () => {
+   audio1.load();
    audio1.play();
 })
 stopPlayBtn.addEventListener('touchstart', () => {
