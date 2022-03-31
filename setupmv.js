@@ -38,12 +38,12 @@ playBtn.addEventListener('touchstart', (e) => {
    audio1.load();
    audio1.play();
 })
-stopPlayBtn.addEventListener('touchstart', () => {
+stopPlayBtn.addEventListener('touchstart', (e) => {
    e.preventDefault();
    audio1.pause();
    audio1.currentTime = 0;
 })
-pauseBtn.addEventListener('touchstart', () => {
+pauseBtn.addEventListener('touchstart', (e) => {
    e.preventDefault();
    audio1.pause();
 })
